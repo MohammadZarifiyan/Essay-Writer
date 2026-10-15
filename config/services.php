@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'telegram' => [
+        'api-key' => env('TELEGRAM_API_KEY'),
+        'secret-token' => env('TELEGRAM_SECRET_TOKEN'),
+        'endpoint' => env('TELEGRAM_ENDPOINT', 'https://api.telegram.org'),
+        'proxies' => explode(',', env('TELEGRAM_PROXIES', '')),
+    ],
+
 ];
