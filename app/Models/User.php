@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 use MohammadZarifiyan\Telegram\Interfaces\HasStage;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements HasStage
+class User extends Authenticatable implements HasStage, FilamentUser
 {
     use HasRoles, Notifiable, SoftDeletes;
 
@@ -30,5 +33,15 @@ class User extends Authenticatable implements HasStage
     public function getStage(): null|string|object
     {
         return $this->stage;
+    }
+
+    public function routeNotificationForTelegram(Notification $notification): int
+    {
+        return $this->telegram_id;
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $panel->getId() === 'admin' ? $this->hasRole('administrator') : true;
     }
 }

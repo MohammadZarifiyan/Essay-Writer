@@ -40,6 +40,12 @@ return [
         'secret-token' => env('TELEGRAM_SECRET_TOKEN'),
         'endpoint' => env('TELEGRAM_ENDPOINT', 'https://api.telegram.org'),
         'proxies' => explode(',', env('TELEGRAM_PROXIES', '')),
+
+        // Socialite
+        'bot' => env('TELEGRAM_BOT_USERNAME'),
+        'client_id' => null,
+        'client_secret' => env('TELEGRAM_API_KEY'),
+        'redirect' => '/auth/callback',
     ],
 
 ];

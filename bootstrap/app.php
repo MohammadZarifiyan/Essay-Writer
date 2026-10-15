@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->redirectGuestsTo(fn () => route('login'));
+        $middleware->redirectUsersTo(fn () => filament()->getHomeUrl());
         $middleware->preventRequestsDuringMaintenance(['/api/telegram/update/*']);
         $middleware->trustProxies('*',
             SymfonyRequest::HEADER_FORWARDED |

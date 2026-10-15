@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('login', [AuthController::class, 'redirect'])->middleware('guest')->name('login');
+Route::get('auth/callback', [AuthController::class, 'callback'])->middleware('guest');
