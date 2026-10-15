@@ -2,7 +2,7 @@
     "$schema": "https://getcomposer.org/schema.json",
     "type": "project",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0"
     },
