@@ -1,0 +1,1 @@
+* * * * * su -s /bin/sh www-data -c "/usr/local/bin/php /var/www/artisan schedule:run"
