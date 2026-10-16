@@ -178,12 +178,7 @@ return [
     |
     */
 
-    'text-must-contain-campaign-id-or-telegram-ads-campaign-page-link' => 'متن باید شامل شناسه کمپین یا لینک صفحه کمپین در Telegram Ads (برای مثال: ads.telegram.org/account/ad/123) باشد.',
-
     'custom' => [
-        'message.chat_shared' => [
-            'required' => 'باید یک کانال یا گروه به اشتراک گذاشته شود.',
-        ],
         'message.text' => [
             'required' => 'پیام متنی الزامی است.',
         ],
@@ -201,7 +196,6 @@ return [
     */
 
     'attributes' => [
-        'message.text' => 'متن پیام',
         'selected_button' => 'دکمه انتخاب شده',
     ],
 
