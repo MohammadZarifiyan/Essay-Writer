@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d061ac69291f47290b62fa15cd177685",
+    "content-hash": "2b49d73f90b45b8d13fa537d466173f8",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3962,6 +3962,56 @@
                 }
             ],
             "time": "2026-09-28T18:12:51+00:00"
+        },
+        {
+            "name": "mohammad-zarifiyan/laravel-locale-kit",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohammadZarifiyan/Laravel-Locale-Kit.git",
+                "reference": "e771f74d6700c81c6c96ae4794415780d7e05e8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohammadZarifiyan/Laravel-Locale-Kit/zipball/e771f74d6700c81c6c96ae4794415780d7e05e8d",
+                "reference": "e771f74d6700c81c6c96ae4794415780d7e05e8d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=7",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MohammadZarifiyan\\LaravelLocaleKit\\Providers\\DeferredServiceProvider",
+                        "MohammadZarifiyan\\LaravelLocaleKit\\Providers\\InstantServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MohammadZarifiyan\\LaravelLocaleKit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Mohammad Zarifiyan",
+                    "email": "mohammadzarifiyan82@gmail.com"
+                }
+            ],
+            "description": "A Laravel package that provides structured locale metadata alongside traditional translation files.",
+            "keywords": [
+                "laravel",
+                "locale"
+            ],
+            "support": {
+                "issues": "https://github.com/MohammadZarifiyan/Laravel-Locale-Kit/issues",
+                "source": "https://github.com/MohammadZarifiyan/Laravel-Locale-Kit/tree/v2.0.3"
+            },
+            "time": "2026-09-03T17:27:46+00:00"
         },
         {
             "name": "mohammad-zarifiyan/laravel-telegram-bot",
