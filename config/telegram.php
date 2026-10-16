@@ -81,7 +81,9 @@ return [
 	/**
 	 * List of command handlers that should be used to handle Telegram bot commands.
 	 */
-	'command_handlers' => [],
+	'command_handlers' => [
+        \App\Telegram\CommandHandlers\StartCommandHandler::class,
+    ],
 
 	/**
 	 * An array of breakers classes that run before stage handler.
