@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\TemporarilyDataManager;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -43,5 +44,15 @@ class User extends Authenticatable implements HasStage, FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return $panel->getId() === 'admin' ? $this->hasRole('administrator') : true;
+    }
+
+    public function temporarilyDataManager(): TemporarilyDataManager
+    {
+        return new TemporarilyDataManager($this);
+    }
+
+    public function temporarilyData()
+    {
+        return $this->hasMany(TemporarilyData::class);
     }
 }
