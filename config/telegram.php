@@ -29,7 +29,7 @@ return [
      * It must be an instance of \MohammadZarifiyan\Telegram\Interfaces\EndpointRepository
 	 */
 	'endpoint-repository' => \MohammadZarifiyan\Telegram\Repositories\EndpointRepository::class,
-	
+
 	/**
 	 * Telegram API Key repository.
      *
@@ -41,14 +41,14 @@ return [
      * An instance of \MohammadZarifiyan\Telegram\Interfaces\PendingHttpRequest that accepts \MohammadZarifiyan\Telegram\Interfaces\PendingHttpRequest as its constructor parameter.
      */
     'pending-http-request-manipulator' => null,
-	
+
 	/**
 	 * Telegram secret token repository.
      *
      * It must be an instance of \MohammadZarifiyan\Telegram\Interfaces\SecretTokenRepository
 	 */
 	'secret-token-repository' => \MohammadZarifiyan\Telegram\Repositories\SecretTokenRepository::class,
-	
+
 	/**
 	 * Allow handling incognito command.
 	 *
@@ -56,7 +56,7 @@ return [
 	 * application would throw TelegramCommandHandlerNotFoundException.
 	 */
 	'allow-incognito-command' => false,
-	
+
 	/**
 	 * Throw exception if performing HTTP request failed.
 	 *
@@ -64,12 +64,12 @@ return [
 	 * when handling Telegram updates through Telegram webhook.
 	 */
 	'throw-http-exception' => false,
-	
+
 	/**
 	 * Gainer resolver used to resolve gainer from Telegram updates.
 	 */
-	'gainer-resolver' => null,
-	
+	'gainer-resolver' => \App\Telegram\GainerResolver::class,
+
 	/**
 	 * A list of Telegram middlewares will run before handling any command.
 	 * All of them should return request or application would throw TelegramMiddlewareFailedException.
@@ -77,12 +77,12 @@ return [
 	 * It is better to keep this list short to prevent performance issues.
 	 */
 	'middlewares' => [],
-	
+
 	/**
 	 * List of command handlers that should be used to handle Telegram bot commands.
 	 */
 	'command_handlers' => [],
-	
+
 	/**
 	 * An array of breakers classes that run before stage handler.
 	 * If all breakers return "false" then stage handler will execute.
