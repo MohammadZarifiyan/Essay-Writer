@@ -5,6 +5,7 @@ namespace App\Telegram\Stages;
 use App\Enums\MessageCollection;
 use App\Models\BotNotification;
 use App\Models\Message;
+use App\Telegram\ReplyMarkups\PrimaryKeyboard;
 use App\Telegram\Updates\YesOrNoAnswerUpdate;
 use Illuminate\Support\Facades\DB;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
@@ -52,16 +53,20 @@ class ShouldQuoteMessagesOfBotNotification
             return $botNotification;
         });
 
-        Telegram::perform('sendMessage', [
-            'text' => trans('telegram/texts.notification-queued-for-delivery-do-not-delete-messages-until-delivery-completes', [
-                'id' => $botNotification->getKey()
-            ]),
-            'chat_id' => $update->input('message.chat.id'),
-            'reply_to_message_id' => $update->input('message.message_id'),
-            'allow_sending_without_reply' => true,
-            'reply_markup' => [
-                'remove_keyboard' => true
-            ]
-        ]);
+        Telegram::perform(
+            'sendMessage',
+            [
+                'text' => trans('telegram/texts.notification-queued-for-delivery-do-not-delete-messages-until-delivery-completes', [
+                    'id' => $botNotification->getKey()
+                ]),
+                'chat_id' => $update->input('message.chat.id'),
+                'reply_to_message_id' => $update->input('message.message_id'),
+                'allow_sending_without_reply' => true,
+                'reply_markup' => [
+                    'remove_keyboard' => true
+                ]
+            ],
+            PrimaryKeyboard::class
+        );
     }
 }
