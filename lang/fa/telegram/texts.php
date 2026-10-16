@@ -16,6 +16,7 @@ TEXT,
 
 برای شروع، روی دکمه <b>درخواست انشاء</b> کلیک کن! 👇🏻
 TEXT,
+    'operation-canceled' => 'عملیات لغو شد.',
     'the-message-type-is-not-supported' => "{1} این نوع پیام پشتیبانی نشده است!\nپیام باید از نوع :required_one_of_fields باشد. |[2,*] این نوع پیام پشتیبانی نشده است!\nپیام باید یکی از انواع زیر باشد:\n:required_one_of_fields",
     'it-is-not-possible-to-save-protected-content' => 'امکان ذخیره کردن محتوای حفاظت شده وجود ندارد.',
     'message-saved-stop-process-by-save-and-finish-or-continue-saving' => 'پیام شما با موفقیت ذخیره شد. هر زمان که خواستید می‌توانید با ارسال عبارت «ذخیره و پایان» فرایند را متوقف کنید. در غیر این صورت، می‌توانید پیام‌های بیشتری ارسال کنید تا آن‌ها را نیز ذخیره کنم.',

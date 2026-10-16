@@ -91,5 +91,7 @@ return [
 	 *
 	 * It is better to keep this list short to prevent performance issues.
 	 */
-	'breakers' => [],
+	'breakers' => [
+        \App\Telegram\Breakers\Cancel::class,
+    ],
 ];
