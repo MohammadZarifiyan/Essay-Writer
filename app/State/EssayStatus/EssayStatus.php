@@ -2,7 +2,6 @@
 
 namespace App\State\EssayStatus;
 
-use App\Events\EssayStatusChanged;
 use Spatie\ModelStates\State;
 use Spatie\ModelStates\StateConfig;
 
@@ -12,7 +11,6 @@ abstract class EssayStatus extends State
     {
         return parent::config()
             ->default(Pending::class)
-            ->stateChangedEvent(EssayStatusChanged::class)
 
             ->allowTransition(Pending::class, Processing::class)
 
