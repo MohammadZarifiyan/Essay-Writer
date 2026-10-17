@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('bot_id');
             $table->unsignedBigInteger('telegram_id');
             $table->boolean('conversation_initiated')->index();
-            $table->string('stage')->nullable();
+            $table->string('stage');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

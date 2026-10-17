@@ -4,6 +4,7 @@ namespace App\Telegram\Breakers;
 
 use App\Models\User;
 use App\Telegram\ReplyMarkups\PrimaryKeyboard;
+use App\Telegram\Stages\PrimaryStage;
 use Illuminate\Support\Facades\DB;
 use MohammadZarifiyan\Telegram\Enums\Signal;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
@@ -24,7 +25,7 @@ class Cancel
         }
 
         DB::transaction(function () use ($gainer) {
-            $gainer->update(['stage' => null]);
+            $gainer->update(['stage' => PrimaryStage::class]);
             $gainer->temporarilyData()->delete();
         });
 

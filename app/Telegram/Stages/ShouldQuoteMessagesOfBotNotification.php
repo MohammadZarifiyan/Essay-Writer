@@ -48,7 +48,7 @@ class ShouldQuoteMessagesOfBotNotification
             }
 
             $gainer->temporarilyData()->delete();
-            $gainer->update(['stage' => null]);
+            $gainer->update(['stage' => PrimaryStage::class]);
 
             return $botNotification;
         });

@@ -3,6 +3,7 @@
 namespace App\Telegram;
 
 use App\Models\User;
+use App\Telegram\Stages\PrimaryStage;
 use Illuminate\Database\Eloquent\Model;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 use MohammadZarifiyan\Telegram\Interfaces\GainerResolver as GainerResolverInterface;
@@ -32,6 +33,7 @@ class GainerResolver implements GainerResolverInterface
                 'bot_id' => $botId,
                 'telegram_id' => $telegramId,
                 'conversation_initiated' => $conversationInitiated,
+                'stage' => PrimaryStage::class,
             ]);
         }
 
