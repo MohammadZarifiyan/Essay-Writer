@@ -2,6 +2,7 @@
 
 return [
     'cancel' => 'انصراف',
+    'request-essay' => 'درخواست انشاء',
     'send-notification' => 'ارسال اعلان',
     'yes' => 'بله',
     'no' => 'خیر',
