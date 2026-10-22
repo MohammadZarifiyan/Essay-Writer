@@ -11,6 +11,8 @@ use Illuminate\Bus\Batchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Laravel\Ai\Enums\Lab;
+use Laravel\Ai\Responses\StreamedAgentResponse;
+use Laravel\Ai\Streaming\Events\TextDelta;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 use Throwable;
 use function Laravel\Ai\{agent};
@@ -34,23 +36,44 @@ class ProcessEssay implements ShouldQueue
 
         $this->essay->status->transitionTo(Processing::class);
 
-        Telegram::perform('sendChatAction', [
+        Telegram::perform('sendMessageDraft', [
+            'text' => trans('telegram/texts.writing-essay-on-topic', ['topic' => $this->essay->topic]),
             'chat_id' => $this->essay->user->telegram_id,
-            'action' => 'typing'
-        ]);
-
-        $response = agent($this->getInstructions())->prompt(
-            $this->getPrompt(),
-            provider: Lab::OpenAICompatible,
-            model: 'DeepSeek-V4-Flash'
-        );
-
-        $this->essay->status->transitionTo(Generated::class);
-
-        Telegram::perform('sendMessage', [
-            'text' => (string) $response,
-            'chat_id' => $this->essay->user->telegram_id,
+            'draft_id' => $this->essay->getKey(),
+            'can_stop' => false,
         ])->throw();
+
+        $stream = agent($this->getInstructions())
+            ->stream(
+                $this->getPrompt(),
+                provider: Lab::OpenAICompatible,
+                model: 'DeepSeek-V4-Flash'
+            )
+            ->then(function (StreamedAgentResponse $response) {
+                $this->essay->status->transitionTo(Generated::class);
+
+                Telegram::perform('sendMessage', [
+                    'text' => (string) $response,
+                    'chat_id' => $this->essay->user->telegram_id,
+                ])->throw();
+            });
+
+        $text = '';
+
+        foreach ($stream as $event) {
+            if ($event instanceof TextDelta === false) {
+                continue;
+            }
+
+            $text .= $event->delta;
+
+            Telegram::perform('sendMessageDraft', [
+                'text' => $text,
+                'chat_id' => $this->essay->user->telegram_id,
+                'draft_id' => $this->essay->getKey(),
+                'can_stop' => false,
+            ])->throw();
+        }
     }
 
     protected function getInstructions(): string
