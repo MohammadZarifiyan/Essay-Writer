@@ -197,6 +197,11 @@ return [
 
     'attributes' => [
         'selected_button' => 'دکمه انتخاب شده',
+        'essay_topic' => 'موضوع انشاء',
+        'educational_level' => 'مقطع تحصیلی',
+        'essay_type' => 'نوع انشاء',
+        'essay_tone' => 'لحن انشاء',
+        'essay_length' => 'لحن انشاء',
     ],
 
 ];
