@@ -10,6 +10,7 @@ use App\State\EssayStatus\Processing;
 use Illuminate\Bus\Batchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Laravel\Ai\Enums\Lab;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 use Throwable;
 use function Laravel\Ai\{agent};
@@ -36,7 +37,11 @@ class ProcessEssay implements ShouldQueue
             'action' => 'typing'
         ]);
 
-        $response = agent($this->getInstructions())->prompt($this->getPrompt());
+        $response = agent($this->getInstructions())->prompt(
+            $this->getPrompt(),
+            provider: Lab::OpenRouter,
+            model: 'nvidia/nemotron-3.5-super-vl:free'
+        );
 
         $this->essay->fill([
             'content' => (string) $response,
