@@ -41,8 +41,8 @@ class ProcessEssay implements ShouldQueue
 
         $response = agent($this->getInstructions())->prompt(
             $this->getPrompt(),
-            provider: Lab::OpenRouter,
-            model: 'nvidia/nemotron-3.5-lightning:free'
+            provider: Lab::OpenAICompatible,
+            model: 'DeepSeek-V4-Flash'
         );
 
         $this->essay->fill([
