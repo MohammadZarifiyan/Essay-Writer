@@ -22,7 +22,7 @@ class EssayLengthStage
         $gainer = $update->gainer();
         $essay = DB::transaction(function () use ($essayLength, $gainer) {
             $essay = new Essay([
-                'topic' => $gainer->temporarilyDataManager()->findByName('essay_topic'),
+                'topic' => $gainer->temporarilyDataManager()->findByName('topic'),
                 'educational_level' => $gainer->temporarilyDataManager()->findByName('educational_level'),
                 'type' => $gainer->temporarilyDataManager()->findByName('essay_type'),
                 'tone' => $gainer->temporarilyDataManager()->findByName('essay_tone'),
