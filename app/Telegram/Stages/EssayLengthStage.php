@@ -37,7 +37,7 @@ class EssayLengthStage
             return $essay;
         });
 
-        ProcessEssay::dispatch($essay);
+        ProcessEssay::dispatch($essay)->onQueue('process-essay');
 
         Telegram::perform(
             'sendMessage',

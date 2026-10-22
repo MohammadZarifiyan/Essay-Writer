@@ -19,6 +19,8 @@ class ProcessEssay implements ShouldQueue
 {
     use Batchable, Queueable;
 
+    public int $timeout = 0;
+
     public function __construct(public Essay $essay)
     {
         //
