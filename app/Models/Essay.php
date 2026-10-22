@@ -20,7 +20,6 @@ class Essay extends Model
         'type',
         'tone',
         'requested_word_count',
-        'content',
     ];
 
     protected $casts = [

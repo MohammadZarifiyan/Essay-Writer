@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('type');
             $table->string('tone');
             $table->unsignedInteger('requested_word_count');
-            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }
