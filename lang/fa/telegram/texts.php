@@ -75,6 +75,6 @@ TEXT,
     'writing-essay-about-topic' => 'در حال نوشتن انشا با موضوع «:topic» هستیم.',
     'error-occurred-while-generating-essay' => 'در نوشتن انشا خطایی رخ داد.',
     'ai-written-two-engaging-different-essays-read-and-choose-preferred' => '🎉 آماده‌ست! هوش مصنوعی دو انشای جذاب و متفاوت با موضوع «:topic» برات نوشته. بخونشون و ببین کدوم رو بیشتر می‌پسندی:',
-    'essay-1' => '📜 انشای اول',
-    'essay-2' => '📜 انشای دوم',
+    'essay-1' => '<b>📜 انشای اول</b>',
+    'essay-2' => '<b>📜 انشای دوم</b>',
 ];

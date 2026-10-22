@@ -69,6 +69,7 @@ class ProcessEssay implements ShouldQueue
             'chat_id' => $introMessage->json('result.chat.id'),
             'reply_to_message_id' => $introMessage->json('result.message_id'),
             'allow_sending_without_reply' => true,
+            'parse_mode' => 'HTML',
         ])->throw();
 
         Telegram::perform('sendMessage', [
@@ -83,6 +84,7 @@ class ProcessEssay implements ShouldQueue
             'chat_id' => $introMessage->json('result.chat.id'),
             'reply_to_message_id' => $introMessage->json('result.message_id'),
             'allow_sending_without_reply' => true,
+            'parse_mode' => 'HTML',
         ])->throw();
 
         Telegram::perform('sendMessage', [
