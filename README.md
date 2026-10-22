@@ -24,6 +24,9 @@ Run the following commands.
 ```shell
 docker compose -f compose.prod.yml up -d --build
 ```
+```shell
+docker compose -f compose.prod.yml exec app su -s /bin/sh -c "php artisan migrate --force --no-interaction" www-data
+```
 If this is the first time running the application, run the following commands.
 ```shell
 docker compose -f compose.prod.yml exec app su -s /bin/sh -c "php artisan permission:create-role administrator web --no-interaction" www-data
