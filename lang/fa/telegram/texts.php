@@ -74,5 +74,5 @@ TEXT,
 TEXT,
     'writing-essay-about-topic' => 'در حال نوشتن انشا با موضوع «:topic» هستیم.',
     'error-occurred-while-generating-essay' => 'در نوشتن انشا خطایی رخ داد.',
-    'writing-essay-on-topic' => 'در حال نوشتن انشاء با موضوع «:topic»',
+    'writing-essay-on-topic' => '✍️ در حال نوشتن انشاء با موضوع «:topic»',
 ];
