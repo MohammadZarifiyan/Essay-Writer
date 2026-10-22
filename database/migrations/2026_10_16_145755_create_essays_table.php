@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('essays', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained();
+            $table->string('status');
             $table->string('topic');
             $table->string('educational_level');
             $table->string('type');
