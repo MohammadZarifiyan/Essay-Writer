@@ -45,9 +45,6 @@ class ProcessEssay implements ShouldQueue
             model: 'DeepSeek-V4-Flash'
         );
 
-        $this->essay->fill([
-            'content' => (string) $response,
-        ]);
         $this->essay->status->transitionTo(Generated::class);
 
         Telegram::perform('sendMessage', [
