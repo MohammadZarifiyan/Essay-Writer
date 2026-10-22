@@ -41,7 +41,7 @@ class ProcessEssay implements ShouldQueue
             'chat_id' => $this->essay->user->telegram_id,
             'draft_id' => $this->essay->getKey(),
             'can_stop' => false,
-        ])->throw();
+        ]);
 
         $stream = agent($this->getInstructions())
             ->stream(
@@ -72,7 +72,7 @@ class ProcessEssay implements ShouldQueue
                 'chat_id' => $this->essay->user->telegram_id,
                 'draft_id' => $this->essay->getKey(),
                 'can_stop' => false,
-            ])->throw();
+            ]);
         }
     }
 
