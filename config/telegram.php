@@ -76,7 +76,9 @@ return [
 	 *
 	 * It is better to keep this list short to prevent performance issues.
 	 */
-	'middlewares' => [],
+	'middlewares' => [
+        \App\Telegram\Middlewares\CheckForMaintenanceMode::class,
+    ],
 
 	/**
 	 * List of command handlers that should be used to handle Telegram bot commands.

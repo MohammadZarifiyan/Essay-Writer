@@ -5,6 +5,11 @@ return [
 خطا:
 :error
 TEXT,
+    'down-for-maintenance' => <<<TEXT
+🤖 ربات در حال بروزرسانی است...
+
+چند دقیقه دیگر به ما سر بزنید.
+TEXT,
     'greeting' => <<<TEXT
 سلام دوست من! 😍👋
 
