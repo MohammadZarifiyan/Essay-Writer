@@ -91,7 +91,8 @@ class MandatoryMembershipChatResource extends Resource
                 TextColumn::make('chat_id')
                     ->label(__('filament/resources/mandatory-membership-chats/index.table.columns.chat-id'))
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->extraAttributes(['dir' => 'ltr']),
 
                 TextColumn::make('url')
                     ->label(__('filament/resources/mandatory-membership-chats/index.table.columns.url'))
