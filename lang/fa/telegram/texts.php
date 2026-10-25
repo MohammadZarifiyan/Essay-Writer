@@ -80,4 +80,10 @@ TEXT,
     'writing-essay-about-topic' => 'در حال نوشتن انشا با موضوع «:topic» هستیم.',
     'error-occurred-while-generating-essay' => 'در نوشتن انشا خطایی رخ داد.',
     'writing-essay-on-topic' => '✍️ در حال نوشتن انشاء با موضوع «:topic»',
+    'please-join-sponsor-channels-first' => 'لطفاً ابتدا عضو کانال‌های حامی شوید.',
+    'to-get-started-click-request-essay-button' => 'برای شروع، روی دکمه <b>درخواست انشاء</b> کلیک کن! 👇🏻',
+    'to-use-the-bot-you-must-join-sponsor-channels' => <<<TEXT
+برای استفاده از ربات ابتدا باید عضو کانال های زیر بشی👇
+وقتی عضو شدی دکمه <b>عضو شدم</b> رو بزن تا ربات آماده استفاده بشه❤️
+TEXT,
 ];

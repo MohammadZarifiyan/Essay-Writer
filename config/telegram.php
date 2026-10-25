@@ -78,6 +78,7 @@ return [
 	 */
 	'middlewares' => [
         \App\Telegram\Middlewares\CheckForMaintenanceMode::class,
+        \App\Telegram\Middlewares\UpdateMandatoryMembershipChats::class,
     ],
 
 	/**
@@ -95,5 +96,6 @@ return [
 	 */
 	'breakers' => [
         \App\Telegram\Breakers\Cancel::class,
+        \App\Telegram\Breakers\EnsureUserIsJointInMandatoryChats::class,
     ],
 ];

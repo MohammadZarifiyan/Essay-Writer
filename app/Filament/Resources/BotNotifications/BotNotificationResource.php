@@ -27,7 +27,7 @@ class BotNotificationResource extends Resource
 {
     protected static ?string $model = BotNotification::class;
 
-    protected static ?int $navigationSort = 0;
+    protected static ?int $navigationSort = 1;
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBell;
 
     public static function getNavigationBadge(): ?string
