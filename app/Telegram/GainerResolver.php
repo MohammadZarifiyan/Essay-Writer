@@ -3,6 +3,7 @@
 namespace App\Telegram;
 
 use App\Models\User;
+use App\Services\TelegramAccessUrl;
 use App\Telegram\Stages\PrimaryStage;
 use Illuminate\Database\Eloquent\Model;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
@@ -29,12 +30,18 @@ class GainerResolver implements GainerResolverInterface
         ]);
 
         if (is_null($user)) {
-            return User::create([
+            $referrer = $this->getReferrer($update);
+
+            $user = new User([
                 'bot_id' => $botId,
                 'telegram_id' => $telegramId,
                 'conversation_initiated' => $conversationInitiated,
                 'stage' => PrimaryStage::class,
             ]);
+            $user->referrer()->associate($referrer);
+            $user->save();
+
+            return $user;
         }
 
         $user->fill([
@@ -49,5 +56,18 @@ class GainerResolver implements GainerResolverInterface
         }
 
         return $user;
+    }
+
+    protected function getReferrer(Update $update): ?User
+    {
+        $command = $update->toCommand();
+
+        if ($command?->value !== 'start') {
+            return null;
+        }
+
+        $id = new TelegramAccessUrl()->extract($command->value, 'referrer-');
+
+        return is_null($id) ? null : User::find($id);
     }
 }

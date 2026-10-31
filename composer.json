@@ -3,6 +3,7 @@
     "type": "project",
     "require": {
         "php": "^8.4",
+        "ext-intl": "*",
         "filament/filament": "^5.0",
         "laravel/ai": "^1.2",
         "laravel/framework": "^13.17",

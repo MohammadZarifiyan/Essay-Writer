@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\UserCreated;
 use App\Services\TemporarilyDataManager;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -31,6 +32,10 @@ class User extends Authenticatable implements HasStage, FilamentUser
 
     protected $hidden = ['remember_token'];
 
+    protected $dispatchesEvents = [
+        'created' => UserCreated::class,
+    ];
+
     public function getStage(): null|string|object
     {
         return $this->stage;
@@ -49,6 +54,11 @@ class User extends Authenticatable implements HasStage, FilamentUser
     public function temporarilyDataManager(): TemporarilyDataManager
     {
         return new TemporarilyDataManager($this);
+    }
+
+    public function referrer()
+    {
+        return $this->belongsTo(User::class, 'referrer_id');
     }
 
     public function temporarilyData()

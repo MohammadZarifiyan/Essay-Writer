@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class, 'referrer_id')->nullable()->index();
             $table->unsignedBigInteger('bot_id');
             $table->unsignedBigInteger('telegram_id');
             $table->boolean('conversation_initiated')->index();
