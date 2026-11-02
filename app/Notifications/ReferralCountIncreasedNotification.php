@@ -32,7 +32,7 @@ class ReferralCountIncreasedNotification extends Notification implements ShouldQ
         return TelegramRequestContent::fresh()
             ->setMethod('sendMessage')
             ->setData([
-                'text' => trans_choice('notifications/referral-count-increased-notification.telegram', $this->numberOfNewReferrals, [// todo
+                'text' => trans_choice('notifications/referral-count-increased-notification.telegram', $this->numberOfNewReferrals, [
                     'number_of_new_referrals' => Number::format($this->numberOfNewReferrals),
                     'date' => $this->date->timezoneAwareTraditionalIsoFormat('Y/M/d', 'Y/M/d VV')
                 ]),
