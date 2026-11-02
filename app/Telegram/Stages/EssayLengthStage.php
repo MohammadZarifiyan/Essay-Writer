@@ -9,6 +9,7 @@ use App\Telegram\ReplyMarkups\PrimaryKeyboard;
 use App\Telegram\Updates\EssayLengthUpdate;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\RateLimiter;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 
 class EssayLengthStage
@@ -36,6 +37,8 @@ class EssayLengthStage
 
             return $essay;
         });
+
+        RateLimiter::hit('request-essay:' . $gainer->getKey(), now()->addDay()->startOfDay());
 
         ProcessEssay::dispatch($essay)->onQueue('process-essay');
 

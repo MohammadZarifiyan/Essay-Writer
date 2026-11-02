@@ -26,10 +26,9 @@ class RequestEssay implements HandlingUpdateStrategyInterface
     {
         $gainer = $this->update->gainer();
         $maxAttempts = $this->getMaxAttempts($gainer);
-        $rateLimiterKey = 'request-essay:' . $gainer->getKey();
-        $username = $this->getUsername();
 
-        if (RateLimiter::tooManyAttempts($rateLimiterKey, $maxAttempts)) {
+        if (RateLimiter::tooManyAttempts('request-essay:' . $gainer->getKey(), $maxAttempts)) {
+            $username = $this->getUsername();
             $invitationUrl = new TelegramAccessUrl()->make($username, 'referrer-', $gainer->getKey());
 
             Telegram::perform('sendMessage', [
@@ -68,8 +67,6 @@ class RequestEssay implements HandlingUpdateStrategyInterface
                 ]
             ]
         ]);
-
-        RateLimiter::hit($rateLimiterKey, now()->addDay()->startOfDay());
     }
 
     protected function getMaxAttempts(User $user): int
