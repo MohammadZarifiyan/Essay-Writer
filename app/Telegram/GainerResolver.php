@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 use MohammadZarifiyan\Telegram\Interfaces\GainerResolver as GainerResolverInterface;
 use MohammadZarifiyan\Telegram\Update;
+use Sqids\Sqids;
 
 class GainerResolver implements GainerResolverInterface
 {
@@ -66,8 +67,9 @@ class GainerResolver implements GainerResolverInterface
             return null;
         }
 
-        $id = new TelegramAccessUrl()->extract($command->value, 'referrer-');
+        $extractedValue = new TelegramAccessUrl()->extract($command->value, 'referrer-');
+        $numbers = new Sqids(minLength: 8)->decode($extractedValue);
 
-        return is_null($id) ? null : User::find($id);
+        return count($numbers) === 1 ? User::find($numbers[0]) : null;
     }
 }

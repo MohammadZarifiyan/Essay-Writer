@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Redis;
 use MohammadZarifiyan\Telegram\Facades\Telegram;
 use MohammadZarifiyan\Telegram\Update;
+use Sqids\Sqids;
 
 class RequestEssay implements HandlingUpdateStrategyInterface
 {
@@ -29,7 +30,8 @@ class RequestEssay implements HandlingUpdateStrategyInterface
 
         if (RateLimiter::tooManyAttempts('request-essay:' . $gainer->getKey(), $maxAttempts)) {
             $username = $this->getUsername();
-            $invitationUrl = new TelegramAccessUrl()->make($username, 'referrer-', $gainer->getKey());
+            $id = new Sqids(minLength: 8)->encode([$gainer->getKey()]);
+            $invitationUrl = new TelegramAccessUrl()->make($username, 'referrer-', $id);
 
             Telegram::perform('sendMessage', [
                 'text' => trans('telegram/texts.daily-limit-reached-referral-invitation-required', [
