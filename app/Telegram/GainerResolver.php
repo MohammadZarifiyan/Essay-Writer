@@ -63,7 +63,11 @@ class GainerResolver implements GainerResolverInterface
     {
         $command = $update->toCommand();
 
-        if ($command?->signature !== 'start') {
+        if (
+            is_null($command)
+            || $command->signature !== 'start'
+            || is_null($command->value)
+        ) {
             return null;
         }
 
