@@ -39,6 +39,7 @@ class MandatoryMembershipChatIsNowValidNotification extends Notification impleme
                     'url' => $this->mandatoryMembershipChat->url,
                 ]),
                 'chat_id' => $recipient,
+                'disable_web_page_preview' => true,
                 'reply_markup' => [
                     'inline_keyboard' => [
                         [[
