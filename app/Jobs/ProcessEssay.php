@@ -55,6 +55,14 @@ class ProcessEssay implements ShouldQueue
                 Telegram::perform('sendMessage', [
                     'text' => (string) $response,
                     'chat_id' => $this->essay->user->telegram_id,
+                    'reply_markup' => [
+                        'inline_keyboard' => [
+                            [[
+                                'text' => substr($this->essay->topic, 0, 64),
+                                'disabled' => true
+                            ]]
+                        ]
+                    ]
                 ])->throw();
             });
 
