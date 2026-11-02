@@ -5,6 +5,7 @@
         "php": "^8.4",
         "ext-intl": "*",
         "filament/filament": "^5.0",
+        "filament/spatie-laravel-settings-plugin": "^5.0",
         "laravel/ai": "^1.2",
         "laravel/framework": "^13.17",
         "laravel/horizon": "^5.50",
@@ -14,7 +15,8 @@
         "mohammad-zarifiyan/laravel-telegram-bot": "^12.1",
         "socialiteproviders/telegram": "^4.1",
         "spatie/laravel-model-states": "^2.14",
-        "spatie/laravel-permission": "^8.3"
+        "spatie/laravel-permission": "^8.3",
+        "spatie/laravel-settings": "^3.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
