@@ -137,10 +137,5 @@ PROMPT,
     public function failed(?Throwable $exception): void
     {
         $this->essay->status->transitionTo(Failed::class);
-
-        Telegram::perform('sendMessage', [
-            'text' => trans('telegram/texts.error-occurred-while-generating-essay'),
-            'chat_id' => $this->essay->user->telegram_id,
-        ]);
     }
 }
