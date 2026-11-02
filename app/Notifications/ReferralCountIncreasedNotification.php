@@ -24,7 +24,7 @@ class ReferralCountIncreasedNotification extends Notification implements ShouldQ
         return ['telegram'];
     }
 
-    public function toSms(object $notifiable): TelegramRequestContent
+    public function toTelegram(object $notifiable): TelegramRequestContent
     {
         $route = $notifiable->routeNotificationFor('telegram', $this);
         $recipient = $route instanceof TelegramRequestOptions ? $route->recipient : $route;
