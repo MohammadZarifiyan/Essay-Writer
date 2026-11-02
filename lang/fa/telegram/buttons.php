@@ -11,4 +11,5 @@ return [
     'add-the-bot-to-the-group' => 'افزودن ربات به گروه',
     'manage-mandatory-membership-chats' => 'مدیریت گفتگو‌های عضویت اجباری',
     'ive-joined' => 'عضو شدم✅',
+    'invite-friends' => 'دعوت از دوستان',
 ];
