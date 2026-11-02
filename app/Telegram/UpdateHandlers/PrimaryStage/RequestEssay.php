@@ -19,7 +19,7 @@ class RequestEssay implements HandlingUpdateStrategyInterface
 
     public function __construct(protected Update $update)
     {
-        //
+        $this->essaySettings = app(EssaySettings::class);
     }
 
     public function handle(): void
