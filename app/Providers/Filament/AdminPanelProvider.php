@@ -26,7 +26,6 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->font('Vazirmatn', provider: GoogleFontProvider::class)
             ->favicon(asset('favicon.ico'))
-            ->login()
             ->unsavedChangesAlerts()
             ->brandName(__('brand.name'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
