@@ -57,6 +57,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # -----------------------------------------------------------
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+# Copy the healthcheck script
+COPY --chmod=+x docker/production/app/healthcheck.sh /usr/local/bin/healthcheck.sh
+
 # Copy supervisor configs
 COPY docker/production/app/supervisor.conf /etc/supervisor/conf.d/app.conf
 
