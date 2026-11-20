@@ -46,7 +46,7 @@ services:
   redis:
     image: redis:8.6
     restart: unless-stopped
-    command: ["--appendonly yes"]
+    command: ["redis-server", "--appendonly", "yes", "--aof-load-corrupt-tail-max-size", "4096"]
     volumes:
       - redis-data:/data
     networks:
